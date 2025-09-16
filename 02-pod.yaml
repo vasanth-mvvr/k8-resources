@@ -1,0 +1,13 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: ngnix
+spec:
+  containers:
+  - name: ngnix
+    image: ngnix
+    # ports:                      # default is 80
+    # - containerPort: 80
+  # - name: alma
+  #   image: almalinux:9
+
