@@ -1,0 +1,13 @@
+knid: Pod
+apiVersion: v1
+metadata: 
+  name: ngnix
+  lables: 
+    name: frontend
+    project: expense
+    Environment: dev
+    component: frontend
+spec: 
+  containers:
+  - name: ngnix
+    image: ngnix

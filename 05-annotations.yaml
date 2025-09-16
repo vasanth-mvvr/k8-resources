@@ -1,0 +1,15 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: annotations
+  lables: 
+    course: devops
+  annotations:
+   kubernetes.io/created-by: 'mvvr'
+  jenkins.build.url: 'http://vasanthreddy.space/expense/job/backend'
+
+
+spec:
+  containers:
+  - name: ngnix
+    image: ngnix

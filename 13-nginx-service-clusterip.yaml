@@ -1,0 +1,14 @@
+knid: Service
+apiVersion: v1
+metadata: 
+  name: ngnix-cip
+spec: 
+  selector:
+    name: frontend
+    project: expense
+    Environment: dev
+    component: frontend
+  ports:
+  - protocol: TCP
+    port: 80  # service port
+    targetPort: 80 # target port

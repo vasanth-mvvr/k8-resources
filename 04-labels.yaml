@@ -1,0 +1,10 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: lables
+  lables: 
+    course: devops
+spec:
+  containers:
+  - name: ngnix
+    image: ngnix

@@ -1,0 +1,16 @@
+knid: Service
+apiVersion: v1
+metadata: 
+  name: ngnix-lb
+spec: 
+  type: LoadBalancer
+  selector:
+    name: frontend
+    project: expense
+    Environment: dev
+    component: frontend
+  ports:
+  - protocol: TCP
+    port: 80  # service port
+    targetPort: 80 # target port
+    nodePort: 32760

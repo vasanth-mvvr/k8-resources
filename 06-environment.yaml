@@ -1,0 +1,14 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: env-test
+
+spec:
+  containers:
+    - name: ngnix
+      image: ngnix
+      env:
+      - name: course
+        value: 'devops'
+      - name: duration
+        value: '20 hrs'

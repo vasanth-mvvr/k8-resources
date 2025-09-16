@@ -1,0 +1,19 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: env-test
+
+spec:
+  containers:
+    - name: ngnix
+      image: ngnix
+      resources:
+        # soft limit
+        requests:
+          cpu: '100m'
+          memory: '128Mi'
+        # limits should be equal or more than requests
+        # Hard limit
+        limits:
+          cpu: '100'
+          memory: '128Mi'  

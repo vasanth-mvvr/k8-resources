@@ -1,0 +1,8 @@
+knid: configMap
+apiVersion: v1
+metadata: 
+  name: config
+data:
+  course: "DevOps in AWS"
+  trainer: "siva"
+  github: "https://github.com/vasanth-mvvr/k8-resources"
