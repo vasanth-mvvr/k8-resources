@@ -1,0 +1,35 @@
+knid: Deployment
+apiVersion: apps/v1
+metadata: 
+  name: nginx 
+# Deployment lables
+  labels: 
+    app: nginx
+    purpose: Deployment
+    tier: web
+  
+spec: 
+  replicas: 3
+  selector:
+    matchLables:
+      app: nginx
+      purpose: Deployment
+      tier: web
+      project: some
+
+# pod definition
+
+template:
+  metadata:
+    app: nginx
+    purpose: Deployment
+    tier: web
+    project: some
+    extra-key: extra-value
+
+  spec: 
+    containers:
+    - name: nginx
+      image: nginx
+      
+
