@@ -1,0 +1,65 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata: 
+  name: ebs-static
+
+spec:
+  accessModes:
+    - ReadWriteOnce
+  Capacity:
+    storage: 5Gi   # give the capacity created in the aws
+  Csi:
+    driver: ebs.csi.aws.com
+    fsType: ext4
+    VolumeHandle: vol-  # give the volume id created in aws
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata: 
+  name: ebs-static
+
+spec:
+  storageClassName: ""
+  VolumeName: ebs-static
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+    
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-static
+  labels:
+    purpose: ebs-static
+    project: expense
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+  volumeMounts:
+  - name: persistant-storage
+    mountPath: /usr/share/nginx/html
+  nodeSelector: 
+    topology.kubernetes.io/zone: us-east-1     # Here the node selector is used when nodes are created in different regions
+  volumes:
+  - name: persistant-storage
+    PersistentVolumeClaim:
+      claimName: ebs-static
+---
+kind: Service
+apiVersion: v1
+metadata: 
+  name: ngnix-lb
+spec: 
+  type: LoadBalancer
+  selector:
+    purpose: ebs-static
+    project: expense
+  ports:
+  - protocol: TCP
+    port: 80  # service port
+    targetPort: 80 # target port

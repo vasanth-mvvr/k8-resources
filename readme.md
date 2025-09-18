@@ -45,3 +45,15 @@ kubectl get pods
 ```
 kubectl exec -it multi-container -c <container-name> --bash
 ```
+* To make command simple add alias name
+```
+alias ka='kubectl apply -f'
+```
+* To check full info of pods
+```
+kubectl get pods -o wide
+```
+* To see the node labels
+```
+kubectl get nodes --show-labels
+```
