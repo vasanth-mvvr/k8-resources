@@ -57,3 +57,9 @@ kubectl get pods -o wide
 ```
 kubectl get nodes --show-labels
 ```
+
+
+* After creating the namespace we can make it as default by setting up as
+```
+kubens expense
+```

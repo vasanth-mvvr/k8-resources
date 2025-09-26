@@ -1,0 +1,14 @@
+To run the taint on the node
+
+```
+kubectl taint nodes <node name> project=expense:NoSchedule
+```
+
+labelling of node
+```
+kubectl label node <node-name> project=expense
+```
+unlabelling of node
+```
+kubectl label node <node name> project-
+```
